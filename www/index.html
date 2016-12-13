@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter">
+  
+<!-- front page starts here -->
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>
+  </ion-nav-bar> 
+  
+
+  <ion-nav-view></ion-nav-view>
+  
+  <script id="list.html" type="text/ng-template">
+   
+   <ion-view view-title="Star Cafe">
+          <ion-pane class="view-with-bg">
+        <img class="i1" class="view-with-bg" class="img-responsive" src="cafe.jpg">
+        <div>
+        <img class="i1" src="cafe.jpg">
+        <div class="col-sm-4">
+          <a href="#/coffee" style="text-decoration: none;">
+            <button class="button button-dark">
+               <i class="icon ion-coffee"></i>
+               Coffee
+            </button>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <a href="#/icecream" style="text-decoration: none;">
+            <button class="button button-dark">
+               <i class="icon ion-icecream"></i>
+               Ice-Cream
+            </button>
+          </a>
+          </div>
+        <div class="col-sm-4">
+          <a href="#/juice" style="text-decoration: none;">
+           <button class="button button-dark">
+             <i class="icon ion-wineglass"></i>
+             Juice
+           </button>
+          </a>
+        </div>               
+      </div>    
+        </ion-pane>       
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="/icecream">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="second.html">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view>
+ </script>
+
+ <!-- front page ends here -->
+
+ <!-- this part include coffee page -->   
+  <script id="coffee.html" type="text/ng-template">
+   <ion-view view-title="Coffee"> 
+      <ion-content>
+       <ion-list>
+          <ion-list can-swipe="true">
+          <div ng-controller="cofeeCtrl">
+            <ion-item item="group" ng-repeat="type in coffeeTypes" href="#/coffee/{{type.name}}" class="item-thumbnail-left" hold-list>
+              <img ng-src="img/{{type.imgFile}}"> 
+              <h2>{{type.name}}</h2>
+              <h4>Price:{{type.price}}Rs</h4>
+              <a href="" style="text-decoration: none;">
+               <button class="button button-clear button-positive">
+                 Add
+               </button>
+              </a>
+            </ion-item>
+          </ion-list>
+          </div>
+        </ion-list>
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view> 
+  </script>  
+<!-- coffee view completed. -->  
+
+<!-- this part include ice-cream page  -->
+  <script id="icecream.html" type="text/ng-template">
+   <ion-view view-title="Ice-Cream"> 
+      <ion-content>
+       <ion-list>
+          <ion-list can-swipe="true">
+          <div ng-controller="IceCreamCtrl">
+            <ion-item item="group" ng-repeat="type in iceCreamTypes" href="#/iceCream/{{type.name}}" class="item-thumbnail-left" hold-list>
+              <img ng-src="img/{{type.imgFile}}"> 
+              <h2>{{type.name}}</h2>
+              <h4>Price:{{type.price}}Rs</h4>
+              <a href="" style="text-decoration: none;">
+               <button class="button button-clear button-positive">
+                 Add
+               </button>
+              </a>
+              <ion-option-button class="button-light icon ion-edit">Edit</ion-option-button>
+              <ion-option-button class="button-assertive icon ion-trash-a">Share</ion-option-button>
+            </ion-item>
+          </ion-list>
+          </div>
+        </ion-list>
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view> 
+  </script>  
+  <!-- ice-cream view completed. -->  
+
+  <!-- this part include juices page  -->
+  <script id="juice.html" type="text/ng-template">
+   <ion-view view-title="Juices"> 
+      <ion-content>
+       <ion-list>
+          <ion-list can-swipe="true">
+          <div ng-controller="JuicesCtrl">
+            <ion-item item="group" ng-repeat="type in juiceTypes" href="#/juice/{{type.name}}" class="item-thumbnail-left" hold-list>
+              <img ng-src="img/{{type.imgFile}}"> 
+              <h2>{{type.name}}</h2>
+              <h4>Price:{{type.price}}Rs</h4>
+              <a href="" style="text-decoration: none;">
+               <button class="button button-clear button-positive">
+                 Add
+               </button>
+              </a>              
+              <ion-option-button class="button-light icon ion-edit">Edit</ion-option-button>
+              <ion-option-button class="button-assertive icon ion-trash-a">Share</ion-option-button>
+            </ion-item>
+          </ion-list>
+          </div>
+        </ion-list>
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view> 
+  </script>  
+  <!-- juices view completed. --> 
+
+  <!-- this part include coffee details -->
+
+  <script id="coffeeDetails.html" type="text/ng-template">
+    <ion-view view-title="Coffee Details">   
+      <ion-content>
+        <div class="list card">
+  
+          <div class="item item-avatar">
+            <img src="img/espresso.jpg">
+            <h2>{{type.name}}</h2>
+            <p>{{type.price}}</p>
+          </div>
+  
+          <div class="item item-image">
+            <img ng-src="img/espresso.jpg">
+            <h2>xyz</h2>
+            <p>{{type.price}}</p>
+          
+  
+          <p>
+              desciption desciption desciption desciption desciption desciption desciption desciption desciption desciption 
+              desciption desciption desciption desciption desciption desciption desciption 
+          </p>
+          </div>
+          </div>
+          <div class="d1">
+          <button class="button button-assertive">View Feedback</button>
+          <button class="button button-assertive" class="padding"> Give Feedback </button>
+          </div>
+        
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view>     
+  </script>  
+
+<!-- Coffee Details ends here -->
+
+
+<!-- This part includes Ice Cream Details -->
+
+  <script id="iceCreamDetails.html" type="text/ng-template">
+    <ion-view view-title="IceCream Details">   
+      <ion-content>
+        <div class="list card">
+  
+          <div class="item item-avatar">
+            <img src="img/strawberryIce.jpg">
+            <h2>abc</h2>
+            <p>{{type.price}}</p>
+          </div>
+  
+          <div class="item item-image">
+            <img ng-src="img/strawberryIce.jpg">
+            <h2>xyz</h2>
+            <p>{{type.price}}</p>
+          
+  
+          <p>
+              desciption desciption desciption desciption desciption desciption desciption desciption desciption desciption 
+              desciption desciption desciption desciption desciption desciption desciption 
+          </p>
+          </div>
+          </div>
+          <div class="d1">
+          <button class="button button-assertive">View Feedback</button>
+          <button class="button button-assertive" class="padding"> Give Feedback </button>
+          </div>
+        
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view>     
+  </script>
+
+  <!-- Ice Cream Details ends here -->
+
+  <!-- This part includes Juice Details -->
+
+  <script id="juiceDetails.html" type="text/ng-template">
+    <ion-view view-title="Juice Details">   
+      <ion-content>
+        <div class="list card">
+  
+          <div class="item item-avatar">
+            <img src="img/orange.jpg">
+            <h2>abc</h2>
+            <p>{{type.price}}</p>
+          </div>
+  
+          <div class="item item-image">
+            <img ng-src="img/orange.jpg">
+            <h2>xyz</h2>
+            <p>{{type.price}}</p>
+          
+  
+          <p>
+              desciption desciption desciption desciption desciption desciption desciption desciption desciption desciption 
+              desciption desciption desciption desciption desciption desciption desciption 
+          </p>
+          </div>
+          </div>
+          <div class="d1">
+          <button class="button button-assertive">View Feedback</button>
+          <button class="button button-assertive" class="padding"> Give Feedback </button>
+          </div>
+        
+      </ion-content>
+      <div class="tabs tabs-icon-top tabs-dark">
+         <a class="tab-item" href="/">
+           <i class="icon ion-home"></i>
+           Home
+        </a>
+        <a class="tab-item" href="">
+            <i class="icon ion-person"></i>
+            About Us
+        </a>
+        <a class="tab-item" href="">
+           <i class="icon ion-share"></i>
+           Share
+        </a>
+    </div>
+    </ion-view>     
+  </script>
+
+  <!-- Juice Details ends here -->
+
+  </body>
+</html>

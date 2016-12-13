@@ -1,0 +1,52 @@
+.item-image {
+  background: white;
+  border: white;
+}
+ 
+.item-image img:first-child, .item-image .list-img {
+  width: 200px;
+}
+.i1{
+	height:100%;
+	width: 100%;
+
+}
+.view-with-bg{
+  .view-content {
+    background-image: url('cafe.jpg');
+    background-size: cover;
+  }
+}
+.view-with-bg{
+  .pane {
+    background-image: url('cafe.jpg') !important;
+    background-size: cover !important;
+  }
+}
+
+
+.p1{
+	position: absolute;
+	margin-left: 5%;
+
+	top:40%;
+	
+}
+.p2{
+	position: absolute;
+	
+	
+	top:40%;
+	left:41%;
+}
+.p3{
+	position: absolute;
+
+	margin-right: 5%;
+	top:40%;
+	left:82%;
+}
+.d1{
+	margin-left:9%;
+}
+
